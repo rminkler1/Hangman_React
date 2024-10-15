@@ -7,10 +7,20 @@ import { Keyboard } from "./Keyboard";
 function App() {
   // Get a random word and store it
   const [wordToGuess, setWordToGuess] = useState(
-    words[Math.floor(Math.random() * words.length)]
+    "test"
+    // words[Math.floor(Math.random() * words.length)]
   );
 
-  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([
+    "t",
+    "i",
+    "e",
+    "d",
+  ]);
+
+  const incorrectLetters = guessedLetters.filter(
+    (letter) => !wordToGuess.includes(letter)
+  );
 
   return (
     <div
@@ -31,7 +41,7 @@ function App() {
       >
         Lose Win
       </div>
-      <HangmanDrawing />
+      <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord />
       <div
         style={{

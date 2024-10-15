@@ -1,3 +1,5 @@
+// Define Parts
+
 const HEAD = (
   <div
     style={{
@@ -84,16 +86,19 @@ const LEFT_LEG = (
     }}
   />
 );
-export function HangmanDrawing() {
+
+// reference all body parts
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
+
+type HangmanDrawingProps = {
+  numberOfGuesses: number;
+};
+
+export function HangmanDrawing({ numberOfGuesses }: HangmanDrawingProps) {
   return (
     <div style={{ position: "relative" }}>
       {/* Build the man */}
-      {HEAD}
-      {BODY}
-      {RIGHT_ARM}
-      {LEFT_ARM}
-      {RIGHT_LEG}
-      {LEFT_LEG}
+      {BODY_PARTS.slice(0, numberOfGuesses)}
 
       {/* Hangman diagram */}
       <div
